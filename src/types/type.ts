@@ -1,4 +1,4 @@
-export interface Task {
+export type Task = {
     id: number,
     title: string,
     body: string,
@@ -10,6 +10,15 @@ export interface Task {
         body: string
     }[] | []
 
-}[]
+}
+
+export type createUpdateTask = {
+    id: number,
+    title: string,
+    body: string,
+    status: 'Ongoing' | 'Completed' | "Will Do"
+}
+
+export type TaskList = Task[] | []
 
 

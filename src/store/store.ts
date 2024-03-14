@@ -1,12 +1,17 @@
 import { create } from "zustand";
-import { type Task } from "../types/type";
+import { type TaskList, UpdateTask, Task } from "../types/type";
 
 // @Type Definitions
 export interface InitialState {
-  tasks: Task[] | [];
+  formActive: boolean;
+  tasks: TaskList;
 }
 export interface Actions {
-  addTask: (task: Task) => void;
+  getTasks: (taskList: TaskList) => void;
+  updateTask: (task: UpdateTask) => void;
+  deleteTask: (id:number) => void;
+  addTask: (task:Task) => void;
+  setFormActive: (current: boolean)=> void
 }
 // @End of Type Definitios
 
@@ -14,14 +19,38 @@ export interface Actions {
 
 
 const initialState: InitialState = {
+  formActive: false,
   tasks: [],
 };
 
 
 
-const store = create<InitialState & Actions>((set) => ({
+const zustandStore = create<InitialState & Actions>((set) => ({
   ...initialState,
-  addTask: (task) => set({tasks: [...initialState.tasks,task]})
+  setFormActive: (current)=> set((state)=>{
+    return {...state,formActive: current}
+  } ),
+  getTasks: (taskList:TaskList) => set(()=> ({tasks: [...taskList] })),
+  addTask: (task:Task)=> set((state)=>{
+    return {tasks: [...state.tasks, task]}
+  }),
+  updateTask: (task:UpdateTask) => set((state)=>{
+    const task_to_update = state.tasks.find((t)=> t.id === task.id)
+
+    if(task_to_update){
+      task_to_update.title = task.title
+      task_to_update.body = task.body
+      task_to_update.status = task.status
+    }
+    return {tasks:[...state.tasks]}
+  }),
+
+  deleteTask: (id)=> set((state)=>{
+    const new_task_list = state.tasks.filter((task)=> task.id !== id)
+
+    return {tasks: [...new_task_list]}
+  })
+  
 }));
 
-export default store;
+export default zustandStore;
