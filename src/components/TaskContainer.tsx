@@ -21,8 +21,6 @@ const TaskContainer = () => {
   const  setFormActive = zustandStore(state => state.setFormActive)
 
 
-  console.log('re-rendered');
-
 
 
   const { data, error, isLoading, isError, isSuccess } = useQuery({

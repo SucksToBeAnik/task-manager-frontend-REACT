@@ -6,7 +6,13 @@ import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
 import { Toaster } from "react-hot-toast";
 import zustandStore from "./store/store";
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+  defaultOptions:{
+    queries:{
+      staleTime: 1000* 60 *5
+    }
+  }
+});
 
 type Theme = "dark" | "light";
 interface ContextValue {
@@ -19,8 +25,6 @@ const App = () => {
   const ThemeContext = createContext<ContextValue>({ theme, setTheme });
 
   const formActive = zustandStore(state=>state.formActive)
-
-  console.log(formActive);
 
   const value: ContextValue = {
     theme,

@@ -12,11 +12,18 @@ export type Task = {
 
 }
 
-export type createUpdateTask = {
-    id: number,
+export interface CreateTask{
+
     title: string,
     body: string,
     status: 'Ongoing' | 'Completed' | "Will Do"
+}
+
+
+
+export interface UpdateTask extends CreateTask {
+    id: number,
+    
 }
 
 export type TaskList = Task[] | []

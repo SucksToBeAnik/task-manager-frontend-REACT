@@ -1,4 +1,4 @@
-import { TaskList, createUpdateTask } from "../types/type"
+import { TaskList, UpdateTask, CreateTask } from "../types/type"
 
 import axios from "axios"
 
@@ -18,16 +18,18 @@ export async function apiGetTasks():Promise<TaskList>{
     }
 }
 
-export async function apiAddTask(task:createUpdateTask){
+export async function apiAddTask(task:CreateTask){
     try{
         const response = await axios({
             method:'post',
-            url:`/tasks/${task.id}`,
+            url:`/tasks/create/`,
             data:{
                 title:task.title,
                 body: task.body,
                 status:task.status
-            }
+            },
+            withCredentials:true,
+        
         })
 
         return response
@@ -41,7 +43,7 @@ export async function apiAddTask(task:createUpdateTask){
     
 }
 
-export async function apiUpdateTask(task:createUpdateTask){
+export async function apiUpdateTask(task:UpdateTask){
     try{
         const response = await axios({
             method:'put',
