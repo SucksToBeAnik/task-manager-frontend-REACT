@@ -17,7 +17,7 @@ const AddTaskForm = () => {
   const description = useRef<HTMLTextAreaElement>(null);
   const status = useRef<HTMLSelectElement>(null);
 
-  const { mutate, isPending, isSuccess } = useMutation({
+  const { mutate, isPending, isError } = useMutation({
     mutationKey: ["addTask"],
     mutationFn: apiAddTask,
     onSuccess: () => {
@@ -70,7 +70,7 @@ const AddTaskForm = () => {
           </button>
         </div>
 
-        {isPending && (
+        {(isPending && !isError) && (
           <motion.div
             animate={{
               scale: [0, 1],

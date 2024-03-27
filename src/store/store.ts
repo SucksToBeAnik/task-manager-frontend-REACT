@@ -46,7 +46,12 @@ const zustandStore = create<InitialState & Actions>((set) => ({
   }),
 
   deleteTask: (id)=> set((state)=>{
+    console.log("BEFORE:",state.tasks);
     const new_task_list = state.tasks.filter((task)=> task.id !== id)
+
+    console.log("AFTER:",new_task_list);
+
+
 
     return {tasks: [...new_task_list]}
   })
