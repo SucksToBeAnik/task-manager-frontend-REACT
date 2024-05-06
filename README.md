@@ -1,17 +1,23 @@
 # Task Manager App FrontEnd
 
-*`Note`*  
-The purpose of this app is to learn **TypeScript**
+`COMPLETED`
+
+[Live Link](https://task-manager-frontend-react-js.vercel.app/)
+
+## Framework
+* `React JS`
 
 ## Modules Used
-
-* `React JS`
 * `React Tanstack Query`
+*  `Framer Motion`
 * `Zustand`
 * `Axios`
 * `Tailwind CSS`
 
 <hr />
+
+*`Note`*  
+The purpose of this app is to learn **TypeScript**
 
 *`Note`*    
 Find the Backend API of this project in this [**Repository**](https://github.com/SucksToBeAnik/task-manager-backend-FastAPI)
