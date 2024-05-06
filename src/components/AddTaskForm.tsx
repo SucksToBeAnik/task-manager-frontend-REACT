@@ -1,6 +1,5 @@
 import { MdOutlineClose } from "react-icons/md";
 import { BiLoaderCircle } from "react-icons/bi";
-import { MdOutlineDone } from "react-icons/md";
 
 import zustandStore from "../store/store";
 import { motion } from "framer-motion";
@@ -21,7 +20,7 @@ const AddTaskForm = () => {
     mutationKey: ["addTask"],
     mutationFn: apiAddTask,
     onSuccess: () => {
-      toast.success("Task added succesfully!");
+      toast.success("Task Added!");
 
       queryClient.invalidateQueries({
         queryKey: ["getTasks"],

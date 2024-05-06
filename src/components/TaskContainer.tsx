@@ -2,10 +2,10 @@ import { BiLoaderCircle } from "react-icons/bi";
 import { FaPlus } from "react-icons/fa";
 import { MdOutlineDone } from "react-icons/md";
 import SingleTask from "./SingleTask";
-import { apiGetTasks, apiAddTask } from "../api/apiTasks";
+import { apiGetTasks } from "../api/apiTasks";
 import toast from "react-hot-toast";
 import { useEffect } from "react";
-import { useMutation, useQuery } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 import zustandStore from "../store/store";
 import AddTaskForm from "./AddTaskForm";
 import { AnimatePresence, motion } from "framer-motion";
@@ -27,8 +27,6 @@ const TaskContainer = () => {
     queryKey: ["getTasks"],
     queryFn: apiGetTasks,
   });
-
-  console.log("EROR:",isError);
 
 
 

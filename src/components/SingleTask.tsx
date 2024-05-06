@@ -7,7 +7,7 @@ import { useMutation } from "@tanstack/react-query";
 import { apiDeleteTask } from "../api/apiTasks";
 import zustandStore from "../store/store";
 import toast from "react-hot-toast";
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 
 interface TaskProps {
   task: T;
@@ -24,7 +24,7 @@ const SingleTask: FC<TaskProps> = ({ task, bgColor,id }) => {
     mutationFn: apiDeleteTask,
     onSuccess: () => {
       deleteTask(task.id);
-      toast.success("Toast deleted!");
+      toast.success("Task deleted!");
     },
   });
 
